@@ -2,3 +2,19 @@
 # it should include the board
 #  - its lists
 #    - the cards for each list
+
+# Needed to explicitly call extract in order to keep the data
+json.extract! @board, :id, :user_id, :title, :created_at, :updated_at
+json.lists @board.lists do |list|
+  json.extract! list, :id, :board_id, :title, :ord, :created_at, :updated_at
+  json.cards list.cards
+end
+
+# json.extract! @board, :id, :user_id, :title, :created_at, :updated_at
+# json.lists do
+#   json.array! @board.lists do |list|
+#     json.cards do
+#       json.array! list.cards
+#     end
+#   end
+# end
