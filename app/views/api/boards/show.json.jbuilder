@@ -9,12 +9,3 @@ json.lists @board.lists do |list|
   json.extract! list, :id, :board_id, :title, :ord, :created_at, :updated_at
   json.cards list.cards
 end
-
-# json.extract! @board, :id, :user_id, :title, :created_at, :updated_at
-# json.lists do
-#   json.array! @board.lists do |list|
-#     json.cards do
-#       json.array! list.cards
-#     end
-#   end
-# end
