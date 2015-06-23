@@ -1,6 +1,5 @@
-TrelloClone.Views.BoardForm = Backbone.View.extend({
-
-  template: JST['boards/form'],
+TrelloClone.Views.ListForm = Backbone.View.extend ({
+  template: JST['lists/form'],
 
   tagName: 'form',
 
@@ -8,12 +7,11 @@ TrelloClone.Views.BoardForm = Backbone.View.extend({
     "click button": "submit"
   },
 
-  initialize: function () {
-    this.listenTo (this.model, "sync", this.render);
-  },
-
   render: function () {
-    var content = this.template({ board: this.model });
+    var content = this.template({
+      list: this.model
+    });
+
     this.$el.html(content);
     return this;
   },
@@ -27,7 +25,6 @@ TrelloClone.Views.BoardForm = Backbone.View.extend({
     this.model.save({}, {
       success: function () {
         that.collection.add(that.model, { merge: true });
-        Backbone.history.navigate( "boards/" + that.model.id, { trigger: true });
       }
     });
   }

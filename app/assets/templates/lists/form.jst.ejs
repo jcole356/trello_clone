@@ -1,0 +1,14 @@
+<h1>Make a new List</h1>
+
+<form class="" action="index.html" method="post">
+
+  <label for="">Title:
+    <input
+      type="text"
+      name="list[title]"
+      value="<%= list.escape('title') %>">
+  </label>
+
+  <button type="submit" class ="btn btn-default">Submit</button>
+
+</form>

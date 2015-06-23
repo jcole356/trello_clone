@@ -2,14 +2,13 @@ TrelloClone.Views.BoardsIndex = Backbone.View.extend ({
 
   template: JST["boards/index"],
 
-  // model: TrelloClone.Models.Board,  // Not sure why I put this here.
-
   initialize: function () {
     this.listenTo (this.collection, "sync", this.render);
   },
 
   render: function (){
     var content = this.template({ boards : this.collection });
+    this.$el.addClass("boards");
     this.$el.html(content);
     return this;
   }
